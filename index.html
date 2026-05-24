@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportBuddy AI - Your Friendly Sports Companion</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Learn sports rules, terminology, scoring systems, and field layouts without judgment. SportBuddy AI is your friendly, casual companion for sports learning.">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+            <path d="M2 12h20"></path>
+          </svg>
+        </div>
+        <span class="brand-name">SportBuddy <span class="accent-text">AI</span></span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-target="dashboard-view" id="nav-dashboard">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+            <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+            <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+            <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+          </svg>
+          <span>Dashboard</span>
+        </button>
+
+        <button class="nav-item" data-target="chat-view" id="nav-chat">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>SportBuddy Chat</span>
+          <span class="badge">AI</span>
+        </button>
+
+        <button class="nav-item" data-target="flashcards-view" id="nav-flashcards">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="9" y1="21" x2="9" y2="9"></line>
+          </svg>
+          <span>Jargon Cards</span>
+        </button>
+
+        <button class="nav-item" data-target="explainer-view" id="nav-explainer">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+            <path d="M12 8v4"></path>
+            <path d="M12 16h.01"></path>
+          </svg>
+          <span>Interactive Fields</span>
+        </button>
+
+        <button class="nav-item" data-target="quiz-view" id="nav-quiz">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="7"></circle>
+            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+          </svg>
+          <span>Fun Quiz</span>
+        </button>
+
+        <button class="nav-item" data-target="game-center-view" id="nav-game-center">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="6" y1="12" x2="10" y2="12"></line>
+            <line x1="8" y1="10" x2="8" y2="14"></line>
+            <line x1="15" y1="13" x2="15.01" y2="13"></line>
+            <line x1="18" y1="11" x2="18.01" y2="11"></line>
+            <rect x="2" y="6" width="20" height="12" rx="3"></rect>
+          </svg>
+          <span>Game Center</span>
+        </button>
+
+        <button class="nav-item" data-target="watch-view" id="nav-watch">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+          </svg>
+          <span>Watch Matches</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile" id="user-profile-btn" style="cursor: pointer;">
+          <div class="avatar" id="sidebar-avatar">G</div>
+          <div class="user-details">
+            <p class="user-name" id="sidebar-username">Guest Buddy</p>
+            <p class="user-level" id="sidebar-userlevel">Click to Sign In / Sign Up</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- Top Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Sidebar">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="search-bar">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="global-search"
+              placeholder="Ask anything, e.g., 'What is offside?' or 'How is tennis scored?'...">
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Quick stats / Streak -->
+          <div class="stat-pill streak-pill" title="Daily Learning Streak">
+            <span class="pill-icon">🔥</span>
+            <span class="pill-text">3 Days</span>
+          </div>
+          <div class="stat-pill score-pill" title="SportBuddy Points">
+            <span class="pill-icon">✨</span>
+            <span class="pill-text"><span id="user-points">240</span> pts</span>
+          </div>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- View Wrapper -->
+      <div class="view-wrapper">
+
+        <!-- ================= DASHBOARD VIEW ================= -->
+        <section id="dashboard-view" class="view-panel active">
+          <div class="dashboard-hero">
+            <div class="hero-text">
+              <h1>Welcome back, <span class="accent-text">Buddy!</span> 👋</h1>
+              <p>No judgement here. What sport are we demystifying today? Ask anything or pick a game below to get
+                started.</p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" onclick="switchView('chat-view')">Talk to SportBuddy</button>
+                <button class="btn btn-secondary" onclick="switchView('explainer-view')">Explore Fields</button>
+              </div>
+            </div>
+            <div class="hero-mascot" id="mascot-container">
+              <!-- Animated / Generated Mascot goes here -->
+              <div class="mascot-img-wrapper">
+                <div class="friendly-mascot-avatar">
+                  <div class="mascot-eye-left"></div>
+                  <div class="mascot-eye-right"></div>
+                  <div class="mascot-smile"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <!-- Daily Spotlight Card -->
+            <div class="dash-card spotlight-card glassmorphic">
+              <div class="card-badge">Daily Spotlight</div>
+              <h3>💡 Term of the Day: <span class="accent-text" id="spotlight-term">Deuce</span></h3>
+              <p id="spotlight-explanation">In tennis, "Deuce" is a score of 40-40. Think of it like a tiebreaker
+                baseline: from here, a player must win two consecutive points to win the game. It prevents games from
+                ending on a lucky fluke!</p>
+              <div class="card-footer">
+                <span>Associated Sport: 🎾 Tennis</span>
+                <button class="btn-text" id="learn-deuce-btn">Learn Tennis scoring →</button>
+              </div>
+            </div>
+
+            <!-- Quiz Progress Card -->
+            <div class="dash-card progress-card glassmorphic">
+              <h3>🏆 Your Learning Path</h3>
+              <div class="progress-stats">
+                <div class="progress-item">
+                  <div class="progress-info">
+                    <span>⚽ Soccer Basics</span>
+                    <span>80%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar" style="width: 80%"></div>
+                  </div>
+                </div>
+                <div class="progress-item">
+                  <div class="progress-info">
+                    <span>🎾 Tennis Scoring</span>
+                    <span>40%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar" style="width: 40%"></div>
+                  </div>
+                </div>
+                <div class="progress-item">
+                  <div class="progress-info">
+                    <span>🏀 Basketball Rules</span>
+                    <span>10%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar" style="width: 10%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="section-title">Select a Sport to Explore</h2>
+          <div class="sports-selector-grid">
+            <div class="sport-select-card" data-sport="soccer">
+              <div class="sport-icon">⚽</div>
+              <h3>Soccer</h3>
+              <p>Pitch zones, Offside rule, card system & positions explained simply.</p>
+              <span class="sport-difficulty easy">Beginner Friendly</span>
+            </div>
+
+            <div class="sport-select-card" data-sport="basketball">
+              <div class="sport-icon">🏀</div>
+              <h3>Basketball</h3>
+              <p>Double dribble, traveling, shot clock, and point breakdowns.</p>
+              <span class="sport-difficulty easy">Beginner Friendly</span>
+            </div>
+
+            <div class="sport-select-card" data-sport="tennis">
+              <div class="sport-icon">🎾</div>
+              <h3>Tennis</h3>
+              <p>The weird 15-30-40 score lines, Deuce, and Court lines demystified.</p>
+              <span class="sport-difficulty medium">Moderate Rules</span>
+            </div>
+
+            <div class="sport-select-card" data-sport="football">
+              <div class="sport-icon">🏈</div>
+              <h3>American Football</h3>
+              <p>What are "Downs"? What is a line of scrimmage? Touchdowns vs Field Goals.</p>
+              <span class="sport-difficulty hard">Complex Rules</span>
+            </div>
+
+            <div class="sport-select-card" data-sport="cricket">
+              <div class="sport-icon">🏏</div>
+              <h3>Cricket</h3>
+              <p>Runs, wickets, overs, and confusing rules like LBW put into plain terms.</p>
+              <span class="sport-difficulty hard">Complex Rules</span>
+            </div>
+
+            <div class="sport-select-card" data-sport="hockey">
+              <div class="sport-icon">🏒</div>
+              <h3>Ice Hockey</h3>
+              <p>Icing, offsides, power plays, and what the five-hole actually means.</p>
+              <span class="sport-difficulty medium">Moderate Rules</span>
+            </div>
+
+            <div class="sport-select-card" data-sport="baseball">
+              <div class="sport-icon">⚾</div>
+              <h3>Baseball</h3>
+              <p>Innings, strikes, ERA, and the unwritten rules of America's pastime.</p>
+              <span class="sport-difficulty medium">Moderate Rules</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= CHAT VIEW ================= -->
+        <section id="chat-view" class="view-panel">
+          <div class="chat-container glassmorphic">
+
+            <!-- Chat Sidebar (Configurator) -->
+            <div class="chat-sidebar-config">
+              <h3>SportBuddy AI Coach</h3>
+              <p class="config-desc">Change who you are talking to and how they explain details to fit your comfort
+                level.</p>
+
+              <div class="config-group">
+                <label>Choose Sport Focus</label>
+                <div class="sport-pill-selector">
+                  <button class="sport-pill active" data-sport="general">🌐 General</button>
+                  <button class="sport-pill" data-sport="soccer">⚽ Soccer</button>
+                  <button class="sport-pill" data-sport="basketball">🏀 Basketball</button>
+                  <button class="sport-pill" data-sport="tennis">🎾 Tennis</button>
+                  <button class="sport-pill" data-sport="football">🏈 Football</button>
+                  <button class="sport-pill" data-sport="cricket">🏏 Cricket</button>
+                  <button class="sport-pill" data-sport="hockey">🏒 Hockey</button>
+                  <button class="sport-pill" data-sport="baseball">⚾ Baseball</button>
+                </div>
+              </div>
+
+              <div class="config-group">
+                <label>Coaching Tone Style</label>
+                <div class="tone-selector">
+                  <button class="tone-btn active" data-tone="eli5"
+                    title="Explains using simple analogies, perfect for absolute beginners">
+                    <span class="tone-icon">🐣</span>
+                    <div class="tone-info">
+                      <h4>Explain Like I'm 5</h4>
+                      <p>Very simple analogies</p>
+                    </div>
+                  </button>
+                  <button class="tone-btn" data-tone="summary"
+                    title="Short, snappy explanations for quick live-match viewing">
+                    <span class="tone-icon">⏱️</span>
+                    <div class="tone-info">
+                      <h4>Quick Summary</h4>
+                      <p>10-second fast rules</p>
+                    </div>
+                  </button>
+                  <button class="tone-btn" data-tone="story"
+                    title="Deep dive into why the rules were made in the first place">
+                    <span class="tone-icon">📖</span>
+                    <div class="tone-info">
+                      <h4>Story Mode</h4>
+                      <p>How and why it started</p>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Gemini API Key Configuration -->
+              <div class="config-group" style="margin-top: 15px; border-top: 1px solid var(--glass-border); padding-top: 15px;">
+                <label>Gemini API Settings</label>
+                <div class="api-key-container" style="display: flex; gap: 8px; margin-top: 5px;">
+                  <input type="password" id="gemini-api-key" placeholder="Enter Gemini API Key..." class="api-key-input" style="flex-grow: 1; padding: 8px 12px; background: var(--bg-primary); border: 1px solid var(--glass-border); border-radius: var(--border-radius-md); font-size: 0.8rem; outline: none; transition: var(--transition-smooth);">
+                  <button type="button" id="save-api-key-btn" class="btn btn-primary btn-small" style="padding: 8px 12px; font-size: 0.8rem;">Save</button>
+                </div>
+                <p class="config-desc api-help-text" style="font-size: 0.72rem; margin-top: 5px; line-height: 1.35;">
+                  Use a real Gemini model! Get a key at <a href="https://aistudio.google.com/" target="_blank" style="color: var(--accent-blue); text-decoration: none;">Google AI Studio</a>. Saved locally.
+                </p>
+              </div>
+            </div>
+
+            <!-- Chat Window -->
+            <div class="chat-window">
+              <div class="chat-header">
+                <div class="chat-buddy-info">
+                  <div class="buddy-avatar">🤖</div>
+                  <div>
+                    <h3 id="chat-buddy-name">SportBuddy AI</h3>
+                    <p class="buddy-status">Active & ready to support. No dumb questions!</p>
+                  </div>
+                </div>
+                <button class="btn btn-small btn-secondary" id="clear-chat-btn">Clear Chat</button>
+              </div>
+
+              <!-- Messages List -->
+              <div class="chat-messages" id="chat-messages-container">
+                <!-- Welcome Message -->
+                <div class="message buddy-message">
+                  <div class="message-avatar">🤖</div>
+                  <div class="message-content-wrapper">
+                    <div class="message-content">
+                      Hey there! I'm your sports sidekick. Ask me anything—even the stuff you think is "too basic" to
+                      ask your friends. I promise you it's not!
+                      <br><br>
+                      What sport is confusing you right now? Or, click one of the quick questions below to see how I
+                      explain things.
+                    </div>
+                    <span class="message-time">Just now</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick FAQs Carousel -->
+              <div class="quick-questions-wrapper">
+                <p class="quick-questions-title">💡 Tap a question to ask privately:</p>
+                <div class="quick-questions-carousel" id="quick-questions-list">
+                  <!-- Will be populated dynamically by JS based on selected sport -->
+                </div>
+              </div>
+
+              <!-- Input Area -->
+              <form class="chat-input-area" id="chat-input-form">
+                <input type="text" id="chat-message-input" autocomplete="off"
+                  placeholder="Write a 'dumb' sports question here... (e.g., Why is there a yellow card?)">
+                <button type="submit" class="chat-send-btn" aria-label="Send message">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </form>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= FLASHCARDS VIEW ================= -->
+        <section id="flashcards-view" class="view-panel">
+          <div class="view-header">
+            <div>
+              <h1>Jargon Buster Flashcards</h1>
+              <p class="view-subtitle">Swipe, tap, and flip cards to learn confusing terminology easily.</p>
+            </div>
+            <div class="sport-select-dropdown">
+              <label for="flashcard-sport-select">Sport:</label>
+              <select id="flashcard-sport-select">
+                <option value="soccer">⚽ Soccer</option>
+                <option value="basketball">🏀 Basketball</option>
+                <option value="tennis">🎾 Tennis</option>
+                <option value="football">🏈 Football</option>
+                <option value="cricket">🏏 Cricket</option>
+                <option value="hockey">🏒 Ice Hockey</option>
+                <option value="baseball">⚾ Baseball</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="flashcards-container">
+            <!-- Flashcard Stack Area -->
+            <div class="card-display-area">
+              <button class="nav-arrow-btn" id="prev-card-btn" aria-label="Previous card">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+
+              <!-- Flippable Card -->
+              <div class="flashcard-wrapper">
+                <div class="flashcard" id="main-flashcard">
+
+                  <!-- Front of Card -->
+                  <div class="card-face card-front">
+                    <div class="card-sport-tag" id="card-sport-tag">⚽ Soccer</div>
+                    <div class="card-term" id="card-term">Offside</div>
+                    <div class="card-flip-prompt">
+                      <span>Click card to reveal explanation</span>
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Back of Card -->
+                  <div class="card-face card-back">
+                    <div class="card-sport-tag" id="card-sport-tag-back">⚽ Soccer</div>
+                    <h3>What it means:</h3>
+                    <p class="card-definition" id="card-definition">An attacker cannot hang out behind all defenders
+                      waiting for a pass. Think of it like cherry-picking: you must have at least two opponent players
+                      (usually the goalie and one defender) between you and their goal when the ball is passed to you.
+                    </p>
+                    <div class="card-analogy">
+                      <strong>💡 Simple Analogy:</strong> It's like standing at the classroom door waiting for the
+                      teacher to throw you a cheat sheet; you must step inside the room with everyone else first.
+                    </div>
+                    <div class="card-flip-prompt">Click to flip back</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <button class="nav-arrow-btn" id="next-card-btn" aria-label="Next card">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Card Progress / Indicator -->
+            <div class="card-controls">
+              <span class="card-counter" id="card-counter">1 / 5</span>
+              <button class="btn btn-secondary btn-small" id="toggle-quiz-shortcut">Test Knowledge on this
+                Sport</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= INTERACTIVE COURTS VIEW ================= -->
+        <section id="explainer-view" class="view-panel">
+          <div class="view-header">
+            <div>
+              <h1>Interactive Field & Rules Explainer</h1>
+              <p class="view-subtitle">Click parts of the field to learn what lines mean, or trigger rule animations!
+              </p>
+            </div>
+            <div class="sport-select-tabs" id="explainer-tabs">
+              <button class="explainer-tab-btn active" data-sport="soccer">⚽ Soccer</button>
+              <button class="explainer-tab-btn" data-sport="basketball">🏀 Basketball</button>
+              <button class="explainer-tab-btn" data-sport="tennis">🎾 Tennis</button>
+              <button class="explainer-tab-btn" data-sport="football">🏈 Football</button>
+              <button class="explainer-tab-btn" data-sport="cricket">🏏 Cricket</button>
+              <button class="explainer-tab-btn" data-sport="hockey">🏒 Hockey</button>
+              <button class="explainer-tab-btn" data-sport="baseball">⚾ Baseball</button>
+            </div>
+          </div>
+
+          <div class="explainer-layout">
+            <!-- Left Side: Interactive Board -->
+            <div class="explainer-canvas-container glassmorphic">
+              <div class="canvas-header">
+                <span class="canvas-title" id="explainer-canvas-title">Soccer Pitch Layout</span>
+                <div class="animation-controls" id="canvas-anim-controls">
+                  <!-- Animation triggers will load here depending on the sport -->
+                </div>
+              </div>
+
+              <div class="svg-board-wrapper" id="svg-board-container">
+                <!-- SVG courts will be injected here dynamically by JS -->
+              </div>
+            </div>
+
+            <!-- Right Side: Explanation Card -->
+            <div class="explainer-sidebar glassmorphic" id="explainer-sidebar-card">
+              <div class="explainer-placeholder" id="explainer-info-placeholder">
+                <div class="info-icon">📍</div>
+                <h3>Explore the Field</h3>
+                <p>Click on any highlighted line, zone, or circle on the sports layout to see what it is, why it is
+                  there, and how it impacts the game.</p>
+              </div>
+
+              <div class="explainer-details-content hidden" id="explainer-details-content">
+                <div class="detail-header">
+                  <span class="detail-sport-badge" id="detail-sport-type">⚽ Soccer</span>
+                  <h3 id="detail-title">Penalty Box</h3>
+                </div>
+                <div class="detail-body">
+                  <p id="detail-explanation">This large box (18 yards) defines the zone where the goalkeeper is allowed
+                    to use their hands. If a defender commits a foul inside this box, the other team gets a direct shot
+                    at the goal from the penalty spot (12 yards away).</p>
+                  <div class="detail-analogy-box">
+                    <strong>💡 Analogy:</strong> It's the goalkeeper's "safety dome" and the danger zone for defenders.
+                    Inside here, defenders must play carefully!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= QUIZ VIEW ================= -->
+        <section id="quiz-view" class="view-panel">
+          <div class="quiz-welcome-screen glassmorphic" id="quiz-start-screen">
+            <div class="quiz-header-icon">🏆</div>
+            <h1>SportBuddy Friendly Quiz</h1>
+            <p>Ready to test your new sports knowledge? No grades, no judgment, and helpful hints if you get stuck.
+              Complete quizzes to earn badges and points!</p>
+
+            <div class="quiz-setup-group">
+              <label for="quiz-sport-select">Select Sport to Quiz:</label>
+              <select id="quiz-sport-select" class="quiz-select">
+                <option value="soccer">⚽ Soccer</option>
+                <option value="basketball">🏀 Basketball</option>
+                <option value="tennis">🎾 Tennis</option>
+                <option value="football">🏈 American Football</option>
+                <option value="cricket">🏏 Cricket</option>
+                <option value="hockey">🏒 Ice Hockey</option>
+                <option value="baseball">⚾ Baseball</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary btn-large" id="start-quiz-btn">Start Practice Quiz</button>
+          </div>
+
+          <div class="quiz-active-container glassmorphic hidden" id="quiz-play-screen">
+            <div class="quiz-progress-header">
+              <span class="quiz-question-counter" id="quiz-q-counter">Question 1 of 5</span>
+              <div class="quiz-progress-bar-bg">
+                <div class="quiz-progress-bar" id="quiz-progress-indicator" style="width: 20%"></div>
+              </div>
+              <span class="quiz-score-indicator">🔥 Streak: <span id="quiz-current-streak">0</span></span>
+            </div>
+
+            <div class="quiz-question-card">
+              <h2 class="quiz-question-text" id="quiz-question-text">Loading question...</h2>
+
+              <div class="quiz-options-list" id="quiz-options-container">
+                <!-- Buttons injected dynamically -->
+              </div>
+            </div>
+
+            <div class="quiz-footer-actions">
+              <!-- Hint Box -->
+              <div class="quiz-hint-box hidden" id="quiz-hint-box">
+                💡 <span id="quiz-hint-text">Hint goes here...</span>
+              </div>
+
+              <div class="quiz-action-row">
+                <button class="btn btn-secondary btn-small" id="quiz-hint-btn">Need a Hint?</button>
+                <button class="btn btn-primary hidden" id="quiz-next-btn">Next Question</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quiz Results Screen -->
+          <div class="quiz-results-screen glassmorphic hidden" id="quiz-results-screen">
+            <div class="results-badge" id="quiz-badge-unlocked">🎖️</div>
+            <h1 id="results-headline">Great Job!</h1>
+            <p id="results-summary">You scored 4 out of 5! That's awesome learning.</p>
+
+            <div class="points-awarded-card">
+              <span class="points-icon">✨</span>
+              <div>
+                <h4 id="points-awarded-text">+50 Points Added</h4>
+                <p>Total score updated in header!</p>
+              </div>
+            </div>
+
+            <div class="results-actions">
+              <button class="btn btn-primary" id="quiz-restart-btn">Try Another Quiz</button>
+              <button class="btn btn-secondary" onclick="switchView('dashboard-view')">Back to Dashboard</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= AUTH VIEW ================= -->
+        <section id="auth-view" class="view-panel">
+          <div class="auth-container glassmorphic">
+            <div class="auth-box">
+              <div class="auth-tabs">
+                <button class="auth-tab-btn active" id="auth-tab-signin">Sign In</button>
+                <button class="auth-tab-btn" id="auth-tab-signup">Sign Up</button>
+              </div>
+              
+              <!-- Sign In Form -->
+              <form id="signin-form" class="auth-form">
+                <h2>Welcome Back, Sport Buddy!</h2>
+                <p>Sign in to sync your points, play games, and climb the leaderboard.</p>
+                <div class="input-group">
+                  <label for="signin-username">Username</label>
+                  <input type="text" id="signin-username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                  <label for="signin-password">Password</label>
+                  <input type="password" id="signin-password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large w-100">Sign In</button>
+              </form>
+
+              <!-- Sign Up Form -->
+              <form id="signup-form" class="auth-form hidden">
+                <h2>Join SportBuddy AI</h2>
+                <p>Create a profile to log high scores, unlock badges, and track your learning path!</p>
+                <div class="input-group">
+                  <label for="signup-username">Username</label>
+                  <input type="text" id="signup-username" placeholder="Choose a username" required>
+                </div>
+                <div class="input-group">
+                  <label for="signup-password">Password</label>
+                  <input type="password" id="signup-password" placeholder="Create a password" required>
+                </div>
+                <div class="input-group">
+                  <label for="signup-confirm-password">Confirm Password</label>
+                  <input type="password" id="signup-confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large w-100">Create Account</button>
+              </form>
+            </div>
+            
+            <div class="auth-promo">
+              <div class="promo-content">
+                <span class="promo-badge">Level Up Your Sports Knowledge</span>
+                <h3>Play Games, Score Points, & Join the Global Leaderboard</h3>
+                <p>Registering lets you compete in live game challenges, test your court recognition speeds, and match sports jargon in real-time!</p>
+                <div class="promo-features">
+                  <div class="promo-feature"><span class="feature-icon">🎮</span> Interactive Mini-Games</div>
+                  <div class="promo-feature"><span class="feature-icon">🏆</span> Functional Leaderboards</div>
+                  <div class="promo-feature"><span class="feature-icon">🏅</span> 10+ Collectible Badges</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= GAME CENTER VIEW ================= -->
+        <section id="game-center-view" class="view-panel">
+          <div class="view-header">
+            <div>
+              <h1>Interactive Game Center</h1>
+              <p class="view-subtitle">Play games, hone your sports rules recognition, and top the leaderboard!</p>
+            </div>
+          </div>
+
+          <div class="game-center-layout">
+            <!-- Game Selector & Play Area -->
+            <div class="game-main-area">
+              
+              <!-- Dashboard (Game Choices) -->
+              <div id="game-menu" class="game-menu-grid">
+                <!-- Game 1 Card -->
+                <div class="game-card glassmorphic" data-game="court-finder">
+                  <div class="game-icon-banner">📍</div>
+                  <h3>Field Finder Challenge</h3>
+                  <p>How fast can you spot key lines and zones on sports fields? The clock is ticking!</p>
+                  <div class="game-meta">
+                    <span class="game-badge difficulty-easy">Easy</span>
+                    <span class="game-badge">+50 pts max</span>
+                  </div>
+                  <button class="btn btn-primary btn-play">Play Now</button>
+                </div>
+
+                <!-- Game 2 Card -->
+                <div class="game-card glassmorphic" data-game="jargon-matcher">
+                  <div class="game-icon-banner">🧩</div>
+                  <h3>Jargon Matcher</h3>
+                  <p>Match complex sports terms with their friendly explanations before the time runs out.</p>
+                  <div class="game-meta">
+                    <span class="game-badge difficulty-medium">Medium</span>
+                    <span class="game-badge">+80 pts max</span>
+                  </div>
+                  <button class="btn btn-primary btn-play">Play Now</button>
+                </div>
+              </div>
+
+              <!-- Game 1: Field Finder Play Area -->
+              <div id="game-court-finder" class="game-play-panel glassmorphic hidden">
+                <div class="game-play-header">
+                  <button class="btn btn-secondary btn-small" id="game-quit-cf">Exit Game</button>
+                  <div class="game-stats">
+                    <div class="game-stat">Score: <span id="cf-score" class="accent-text">0</span></div>
+                    <div class="game-stat">Lives: <span id="cf-lives">❤❤❤</span></div>
+                    <div class="game-stat">Time: <span id="cf-timer">30</span>s</div>
+                  </div>
+                </div>
+
+                <div class="game-prompt-box">
+                  <h3 id="cf-prompt-text">Find the: Penalty Box</h3>
+                  <p class="sport-sub-prompt">Sport: <span id="cf-sport-label">⚽ Soccer</span></p>
+                </div>
+
+                <div class="game-board-wrapper" id="cf-board-container">
+                  <!-- Active SVG Court injected here -->
+                </div>
+              </div>
+
+              <!-- Game 2: Jargon Matcher Play Area -->
+              <div id="game-jargon-matcher" class="game-play-panel glassmorphic hidden">
+                <div class="game-play-header">
+                  <button class="btn btn-secondary btn-small" id="game-quit-jm">Exit Game</button>
+                  <div class="game-stats">
+                    <div class="game-stat">Score: <span id="jm-score" class="accent-text">0</span></div>
+                    <div class="game-stat">Time: <span id="jm-timer">45</span>s</div>
+                  </div>
+                </div>
+
+                <div class="game-prompt-box">
+                  <h3>Jargon Matcher</h3>
+                  <p>Click a Term, then click its matching Definition!</p>
+                </div>
+
+                <div class="jargon-matcher-board">
+                  <div class="jm-column" id="jm-terms-column">
+                    <!-- Term buttons injected dynamically -->
+                  </div>
+                  <div class="jm-column" id="jm-defs-column">
+                    <!-- Def buttons injected dynamically -->
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Game Over Screen -->
+              <div id="game-over-screen" class="game-play-panel glassmorphic hidden">
+                <div class="game-over-content">
+                  <div class="game-over-icon">🎮</div>
+                  <h2>Game Over!</h2>
+                  <p id="game-over-message">You scored 40 points in Jargon Matcher!</p>
+                  <div class="game-over-stats">
+                    <div class="go-stat-pill">
+                      <span>Points Earned</span>
+                      <strong id="go-points-added">+0</strong>
+                    </div>
+                  </div>
+                  <div class="game-over-actions">
+                    <button class="btn btn-primary" id="game-retry-btn">Play Again</button>
+                    <button class="btn btn-secondary" id="game-back-menu-btn">Back to Game Center</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Global Leaderboards Sidebar -->
+            <div class="leaderboard-sidebar glassmorphic">
+              <div class="leaderboard-header">
+                <h3>🏆 Global Leaderboard</h3>
+                <p>Top SportBuddies in the world</p>
+              </div>
+              <div class="leaderboard-table-container">
+                <table class="leaderboard-table">
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Buddy</th>
+                      <th class="text-right">Points</th>
+                    </tr>
+                  </thead>
+                  <tbody id="leaderboard-body">
+                    <!-- Dynamic Rows -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= WATCH MATCHES VIEW ================= -->
+        <section id="watch-view" class="view-panel">
+          <div class="view-header">
+            <div>
+              <h1>Watch Match Highlights & Tutorials</h1>
+              <p class="view-subtitle">Learn by watching real matches. Select a sport below to view curated videos.</p>
+            </div>
+            
+            <div class="sport-select-tabs" id="watch-sport-tabs" style="margin-top: 15px;">
+              <button class="explainer-tab-btn active" data-sport="soccer">⚽ Soccer</button>
+              <button class="explainer-tab-btn" data-sport="basketball">🏀 Basketball</button>
+              <button class="explainer-tab-btn" data-sport="tennis">🎾 Tennis</button>
+              <button class="explainer-tab-btn" data-sport="football">🏈 Football</button>
+              <button class="explainer-tab-btn" data-sport="cricket">🏏 Cricket</button>
+              <button class="explainer-tab-btn" data-sport="hockey">🏒 Hockey</button>
+              <button class="explainer-tab-btn" data-sport="baseball">⚾ Baseball</button>
+            </div>
+          </div>
+
+          <div class="watch-layout">
+            <!-- Main Video Player -->
+            <div class="video-main-container glassmorphic">
+              <div class="video-player-wrapper">
+                <iframe id="main-video-player" src="" title="Sports Match Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-info-box">
+                <div class="video-title-row">
+                  <span class="video-sport-tag" id="main-video-sport">⚽ Soccer</span>
+                  <span class="video-type-badge" id="main-video-type">Highlights</span>
+                </div>
+                <h3 id="main-video-title">Soccer Match Highlights</h3>
+                <p id="main-video-desc">Watch official game highlights to see how offside, penalties, and rules play out in a real soccer match.</p>
+              </div>
+            </div>
+
+            <!-- Video Playlist Sidebar -->
+            <div class="video-playlist-sidebar glassmorphic">
+              <h3>Available Videos</h3>
+              <div class="video-playlist-list" id="video-playlist-container">
+                <!-- Video thumbnails injected dynamically -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+
+</html>
