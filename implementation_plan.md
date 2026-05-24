@@ -7,7 +7,7 @@ A friendly, non-judgmental sports assistant designed for beginners who want to l
 ## 💡 Idea Evaluation & Feedback
 
 ### What is Good
-1. **Solves a Real Emotional Pain Point**: Social hesitation (fear of looking "dumb" or out-of-the-loop) is a huge barrier for adults wanting to learn sports. A private, non-judgmental AI space solves this perfectly.
+1. **Solves a Real Emotional Pain Point**: Social hesitation (fear of looking "dumb" or out-of-the-loop) is a huge barrier for people wanting to learn sports. A private, non-judgmental AI space solves this perfectly.
 2. **Supportive, Friend-like Tone**: Designing the AI to act like a friendly peer rather than a strict coach or referee makes learning highly accessible and comfortable.
 3. **Multi-Modal Learning**: Combining casual chat with interactive flashcards and functional visual animations accommodates different learning styles (visual, textual, and active).
 
@@ -40,31 +40,33 @@ A friendly, non-judgmental sports assistant designed for beginners who want to l
   * What the lines mean (e.g., 3-point line, penalty box, baseline).
   * How points are scored in that zone.
   * Interactive animations (e.g., click "Offside" to animate a soccer player running past defenders and see the flag go up).
+---
+
+## Future Feaures 
+
+## 🎮 Game Center & Leaderboards
+
+- **Interactive Mini‑Games**: Implement sports‑themed games (e.g., penalty shoot‑out, free‑throw contest, tennis rally) that teach rules while users have fun.
+- **Functional Leaderboards**: Track scores per game, display top‑10 per sport, and allow users to filter by date range.
+- **Authentication Flow**: Add **Sign‑Up** and **Sign‑In** pages (email + password) that integrate with the existing UI aesthetic. Authenticated users will have persistent leaderboard entries and can save game progress.
+- **Design Consistency**: Re‑use the existing color palette, glass‑morphic cards, and micro‑interactions so the Game Center feels like a natural extension of the app.
 
 ---
 
-## 🎨 Design & Aesthetic System
-* **Vibe**: Friendly, encouraging, premium, and clean. Not overly gamified or childish, but warm and inviting.
-* **Colors**:
-  * Backgrounds: Warm slate and dark indigo (`#0F172A`, `#1E293B`)
-  * Primary Accents: Friendly energetic orange/coral (`#F97316` / `#F43F5E`) and comforting teal (`#0D9488`)
-  * Text: Bright white for headers, soft cream/gray for body text.
-* **Typography**: Rounded, clean sans-serif like `Outfit` or `Quicksand` for headers to keep it looking friendly, combined with `Inter` for highly readable body text.
-* **Micro-interactions**: Soft bounces on button hovers, smooth 3D card flips for flashcards, and glowing borders when learning zones are active.
+## 📺 Watch Matches Feature
+
+- Provide a **"Watch Live"** button on each sport’s hub page.
+- Link to publicly available streaming sources or embed a placeholder video player (future integration with official APIs).
+- UI mirrors the rest of the app – dark‑mode friendly, subtle hover glows, and responsive layout.
 
 ---
 
-## 🛠️ File Structure (Workspace: `APL`)
-- `index.html` - Hub navigation, chat interface, flashcard screen, and visual explainer canvas.
-- `styles.css` - Custom styling, CSS-grid layouts, 3D card flipping, and button hover states.
-- `app.js` - Simple single-page routing, simulated AI chat generator (using custom rules engine to answer sports queries instantly and casually), flashcard state machine, and interactive sports board animations.
+## 🤖 AI Chatbot Refinement
+
+- Swap the placeholder rule‑engine with an actual language model (e.g., OpenAI‑compatible) that can handle free‑form user prompts.
+- Keep the tone friendly and supportive; avoid any wording that suggests the user’s questions are “dumb”.
+- The chatbot UI stays subtle—integrated into the existing chat pane with the same visual style, so it feels like a natural part of the app rather than a separate “FAQ” tool.
 
 ---
 
-## Verification Plan
-
-1. **Aesthetic Check**: Open the application locally to ensure it looks premium, friendly, and runs smoothly without lag.
-2. **Interactive Tests**:
-   - Verify card flips work with correct 3D transitions.
-   - Verify chat responds adaptively based on selected tone settings ("ELI5", "Quick Summary", etc.).
-   - Verify field click hotspots correctly highlight and show descriptions/animations.
+*All new sections follow the existing design language and will be incorporated into the final implementation.*
